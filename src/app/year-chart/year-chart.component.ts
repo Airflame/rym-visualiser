@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataImportService } from '../data-import.service';
 
 @Component({
   selector: 'app-year-chart',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YearChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataImportService: DataImportService) {
+    dataImportService.quantityByYear$.subscribe((data) => {
+      this.chartData = [
+        {data: data, label: 'Quantity by year'}
+      ];
+    })
+  }
 
   public chartOptions = {
     scaleShowVerticalLines: false,

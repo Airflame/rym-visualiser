@@ -7,11 +7,13 @@ import { YearChartComponent } from './year-chart/year-chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonModule } from '@angular/material/button';
+import { YearDifferenceChartComponent } from './year-difference-chart/year-difference-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    YearChartComponent
+    YearChartComponent,
+    YearDifferenceChartComponent
   ],
   imports: [
     BrowserModule,

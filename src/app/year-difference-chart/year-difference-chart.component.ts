@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { DataImportService } from '../data-import.service';
 
 @Component({
-  selector: 'app-year-chart',
-  templateUrl: './year-chart.component.html',
-  styleUrls: ['./year-chart.component.scss']
+  selector: 'app-year-difference-chart',
+  templateUrl: './year-difference-chart.component.html',
+  styleUrls: ['./year-difference-chart.component.scss']
 })
-export class YearChartComponent implements OnInit {
+export class YearDifferenceChartComponent implements OnInit {
 
   constructor(private dataImportService: DataImportService) {
-    dataImportService.quantityByYear$.subscribe((data) => {
+    dataImportService.quantityDifferenceByYear$.subscribe((data) => {
       this.chartData = [
-        {data: data, label: 'Quantity by year'}
+        {data: data, label: 'Quantity difference by year'}
       ];
     })
   }
@@ -32,7 +32,7 @@ export class YearChartComponent implements OnInit {
   ];
   public chartLegend = true;
   public chartData = [
-    {data: new Array<number>(74).fill(0), label: 'Quantity by year'}
+    {data: new Array<number>(74).fill(0), label: 'Quantity difference by year'}
   ];
 
   ngOnInit(): void {

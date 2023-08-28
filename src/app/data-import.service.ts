@@ -7,8 +7,10 @@ import { Subject } from 'rxjs';
 export class DataImportService {
 
   quantityByYear: number[] = new Array<number>(74).fill(0);
+  quantityDifferenceByYear: number[] = new Array<number>(74).fill(0);
 
   quantityByYear$: Subject<number[]> = new Subject<number[]>;
+  quantityDifferenceByYear$: Subject<number[]> = new Subject<number[]>;
 
   constructor() { }
 
@@ -21,6 +23,10 @@ export class DataImportService {
         this.quantityByYear[Number(line.split("\",\"")[6]) - 1950]++;
       }
     });
+    for (let i = 1; i <= this.quantityByYear.length; i++) {
+      this.quantityDifferenceByYear[i] = this.quantityByYear[i] - this.quantityByYear[i - 1];
+    }
     this.quantityByYear$.next(this.quantityByYear);
+    this.quantityDifferenceByYear$.next(this.quantityDifferenceByYear);
   }
 }
